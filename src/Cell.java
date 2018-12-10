@@ -30,44 +30,6 @@ public class Cell {
 	public void setRow(int row) {
 		this.row = row;
 	}
-	
-// may not be necessary
-//	public Cell getTop() {
-//		return top;
-//	}
-//	public void setTop(Cell top) {
-//		this.top = top;
-//	}
-//	public Cell getUpperRight() {
-//		return upperRight;
-//	}
-//	public void setUpperRight(Cell upperRight) {
-//		this.upperRight = upperRight;
-//	}
-//	public Cell getLowerRight() {
-//		return lowerRight;
-//	}
-//	public void setLowerRight(Cell lowerRight) {
-//		this.lowerRight = lowerRight;
-//	}
-//	public Cell getBottom() {
-//		return bottom;
-//	}
-//	public void setBottom(Cell bottom) {
-//		this.bottom = bottom;
-//	}
-//	public Cell getLowerLeft() {
-//		return lowerLeft;
-//	}
-//	public void setLowerLeft(Cell lowerLeft) {
-//		this.lowerLeft = lowerLeft;
-//	}
-//	public Cell getUpperLeft() {
-//		return upperLeft;
-//	}
-//	public void setUpperLeft(Cell upperLeft) {
-//		this.upperLeft = upperLeft;
-//	}
 
 	@Override
 	public String toString() {
