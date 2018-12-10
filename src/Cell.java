@@ -4,7 +4,7 @@ public class Cell {
 	private int column;
 	private int row;
 	
-	public Cell(String occupied, int column, int row) {
+	public Cell(String occupied, int row, int column) {
 		super();
 		this.occupied = occupied;
 		this.column = column;
