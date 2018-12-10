@@ -4,27 +4,11 @@ public class Cell {
 	private int column;
 	private int row;
 	
-	// may not be necessary
-	// neighboring cells
-//	private Cell top;
-//	private Cell upperRight;
-//	private Cell lowerRight;
-//	private Cell bottom;
-//	private Cell lowerLeft;
-//	private Cell upperLeft;
-	
-	public Cell(String occupied, int column, int row, Cell top, Cell upperRight, Cell lowerRight, Cell bottom,
-			Cell lowerLeft, Cell upperLeft) {
+	public Cell(String occupied, int column, int row) {
 		super();
 		this.occupied = occupied;
 		this.column = column;
 		this.row = row;
-//		this.top = top;
-//		this.upperRight = upperRight;
-//		this.lowerRight = lowerRight;
-//		this.bottom = bottom;
-//		this.lowerLeft = lowerLeft;
-//		this.upperLeft = upperLeft;
 	}
 	
 	public String getOccupied() {
@@ -87,9 +71,7 @@ public class Cell {
 
 	@Override
 	public String toString() {
-		return "Cell [occupied=" + occupied + ", column=" + column + ", row=" + row + ", top=" + top + ", upperRight="
-				+ upperRight + ", lowerRight=" + lowerRight + ", bottom=" + bottom + ", lowerLeft=" + lowerLeft
-				+ ", upperLeft=" + upperLeft + "]";
+		return "Cell [occupied=" + occupied + ", column=" + column + ", row=" + row  + "]";
 	}
 	
 }
