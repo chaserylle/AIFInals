@@ -3,18 +3,6 @@
  * @author Chasey
  *
  */
-/**
- * @author Chasey
- *
- */
-/**
- * @author Chasey
- *
- */
-/**
- * @author Chasey
- *
- */
 public class Board {
 
 	Cell[][] board = new Cell[9][8];
@@ -37,7 +25,7 @@ public class Board {
 			System.out.println();
 		}
 		
-		printBoard();
+//		printBoard();
 		
 	}
 	
@@ -77,21 +65,39 @@ public class Board {
 			}
 			System.out.println();
 		}
+		System.out.println();
 	}
 	
 	
 	/**
 	 * @param column
 	 * @param row
-	 * @return valid if the initial state is successfully set and is valid.
 	 * 
 	 * sets the initial state of the board
 	 * 6 chips around (column,row) with alternating chips
 	 * top, upper right, lower right, bottom, lower left and upper left.
 	 */
-	public boolean setInitialState(int column, int row) {
-		boolean valid = true;
+	public void setInitialState(int column, int row) {
+//		boolean valid = true;
+		board[column][row+1].setOccupied("X"); //top
+		board[column+1][row+1].setOccupied("O"); //upper right
+		board[column+1][row].setOccupied("X"); //lower right
+		board[column][row-1].setOccupied("O"); //bottom
+		board[column-1][row].setOccupied("X"); // lower left
+		board[column-1][row+1].setOccupied("O"); // upper left
 		
-		return valid;
+		printBoard();
+		
 	}
+	
+	public void nextMove(String playerID) {
+		for(int column = 0; column < board[column].length; column++) {
+			for(int row = 0; row < board[column].length; row++) {
+				if(board[column][row].getOccupied().equals(playerID)) {
+					System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
+				}
+			}
+		}
+	}
+	
 }
