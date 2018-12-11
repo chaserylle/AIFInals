@@ -8,12 +8,12 @@ public class Board {
 		for (int i=0; i<=8; i++) {
 			if(i%2!=0) {
 				for(int x=0; x<6; x++) {
-					board[i][x] = new Cell("pink", x, i);
+					board[i][x] = new Cell("_", x, i);
 //					System.out.print(board[i][x].getColumn() + ":" + board[i][x].getRow() + "    ");
 				}
 			}else {
 				for(int x=0; x<7; x++) {
-					board[i][x] = new Cell("black", x, i);
+					board[i][x] = new Cell("_", x, i);
 //					System.out.print(board[i][x].getColumn() + ":" + board[i][x].getRow() + "    ");
 				}
 			}
@@ -33,11 +33,21 @@ public class Board {
 		for(i=7; i>=0; i--) {
 			for(j=0; j<9; j++) {
 				if(board[j][i]!=null)
-					System.out.print(board[j][i].getColumn() + ":" + board[j][i].getRow() + "    ");
+					if(j%2!=0) {
+						System.out.print(board[j][i].getRow() +":" + board[j][i].getColumn() + "    ");
+					}
 				else
 					System.out.print("       ");
 			}
 			System.out.println();
+			for(j=0; j<9; j++) {
+				if(board[j][i]!=null)
+					if(j%2==0) {
+						System.out.print(board[j][i].getRow() +":" + board[j][i].getColumn() + "    ");
+					}
+				else
+					System.out.print("       ");
+			}
 			System.out.println();
 		}
 	}
