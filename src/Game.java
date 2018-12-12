@@ -14,11 +14,12 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		boolean playtime = true;
 		String playerID;
+		String oponentID;
 		String currentPlayer;
 		Game G = new Game();
 		Scanner kbd = new Scanner(System.in);
-//		int choice;
 		Board X = new Board();
 		X.generateBoard();
 		X.printBoard();
@@ -32,17 +33,33 @@ public class Game {
 		centerColumn = kbd.nextInt();
 		System.out.print("Enter the row number of the vertex: ");
 		centerRow = kbd.nextInt();
+		System.out.print("player (top of vertex): ");
+		String top = kbd.next();
+		System.out.print("player (below vertex): ");
+		String bottom = kbd.next();
 		
-		X.setInitialState(centerColumn, centerRow);
+		X.setInitialState(centerColumn, centerRow, top, bottom);
 		
-		System.out.print("Who am I? (X or O): ");
+		System.out.print("Who am I? (R or G): ");
 		playerID = kbd.next();
+		System.out.print("Oponent ID? (R or G): ");
+		oponentID = kbd.next();
 		System.out.println();
 		
-		System.out.print("Who goes first? (X or O): ");
+		System.out.print("Who goes first? (R or G): ");
 		currentPlayer = kbd.next();
 		
-		
+//		while(playtime) {
+			if(currentPlayer.equals(playerID)) {
+				X.nextMove(playerID, oponentID);
+			}
+			else
+				System.out.print("Enter column: ");
+				int oponentColumn = kbd.nextInt();
+				System.out.print("Enter row: ");
+				int oponentRow = kbd.nextInt();
+				X.insertOponentTile(oponentColumn, oponentRow, oponentID);
+//		}
 		
 		
 //		boolean loop = true;
@@ -86,11 +103,5 @@ public class Game {
 //		}
 	}
 	
-	
-	public void readOponentMove() {
-		
-	}
-	
-
 
 }
