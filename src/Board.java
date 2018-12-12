@@ -1,3 +1,5 @@
+import com.sun.tools.javac.comp.Todo;
+
 import java.util.ArrayList;
 /**
  * @author Chasey
@@ -212,6 +214,63 @@ public class Board {
      * 	=> if(up) x-- if(down) x-- y--
 	 */
 	public void fillNextCell(int column, int row , String opponent_id){
+		if(next){
+
+		}
+
+	}
+	// this method will every cells near the appointed cell.
+	public ArrayList<Cell> cellsBesides(int column, int row, String opponet_id){
+		//this will store the besides things
+		ArrayList<Cell> cells = new ArrayList<Cell>();
+		//upper
+		try {
+			cells.add(board[column][row++]);
+		}catch (Exception e){}
+		//lower
+		try {
+			cells.add(board[column][row--]);
+		}catch (Exception e){}
+
+		//upper-right
+
+		try {
+			if (board[column][row].getUp()) {
+				cells.add(board[column++][row++]);
+			} else {
+				cells.add(board[column++][row]);
+			}
+		}catch(Exception e){}
+
+		//upper-left
+
+		try {
+			if (board[column][row].getUp()){
+				cells.add(board[column--][row++]);
+			}else{
+				cells.add(board[column--][row]);
+			}
+		}catch (Exception e){}
+
+		//lower-right
+		try {
+			if (board[column][row].getUp()){
+				cells.add(board[column++][row]);
+			}else{
+				cells.add(board[column++][row--]);
+			}
+		}catch(Exception e){}
+
+		//lower-left
+		try {
+			if (board[column][row].getUp()){
+				cells.add(board[column--][row]);
+			}else{
+				cells.add(board[column--][row--]);
+			}
+		}catch(Exception e){}
+
+		return cells;
 	}
 	
 //	public int cellsToTheTop(int column, int row, String oponent) {
