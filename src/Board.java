@@ -214,13 +214,26 @@ public class Board {
      * 	=> if(up) x-- if(down) x-- y--
 	 */
 	public void fillNextCell(int column, int row , String opponent_id){
-		if(next){
+		ArrayList<Cell> rawCells = cellsBesides(column,row);
 
+		//first refining - remove allay's cell and empty cell.
+		for(int i = 0; i<rawCells.size();i++){
+			if(rawCells.get(i).getOccupied().equals(opponent_id)){
+			}else {
+				rawCells.remove(i);
+			}
 		}
 
+		/*second refining - acceleration : keep move to upward to check the end of chain. every rawcells should be checked
+			if the the end of chain is empty, that is our candidate of next cell would be checked.
+		*/
+		for(int i=0; i<rawCells.size();i++) {
+
+		}
 	}
-	// this method will every cells near the appointed cell.
-	public ArrayList<Cell> cellsBesides(int column, int row, String opponet_id){
+
+	// this method will return every cells near the appointed cell.
+	public ArrayList<Cell> cellsBesides(int column, int row){
 		//this will store the besides things
 		ArrayList<Cell> cells = new ArrayList<Cell>();
 		//upper
