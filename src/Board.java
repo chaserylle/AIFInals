@@ -2,7 +2,7 @@ import com.sun.tools.javac.comp.Todo;
 
 import java.util.ArrayList;
 /**
- * @author Chasey
+ * @author Chasey & Kyeongho
  *
  */
 public class Board {
@@ -217,19 +217,20 @@ public class Board {
 		ArrayList<Cell> rawCells = cellsBesides(column,row);
 
 		//first refining - remove allay's cell and empty cell.
+		ArrayList<Cell> rawCells_refinded1;
 		for(int i = 0; i<rawCells.size();i++){
 			if(rawCells.get(i).getOccupied().equals(opponent_id)){
+				rawCells_refinded1.add(rawCells.get(i));
 			}else {
-				rawCells.remove(i);
 			}
 		}
 
 		/*second refining - acceleration : keep move to upward to check the end of chain. every rawcells should be checked
 			if the the end of chain is empty, that is our candidate of next cell would be checked.
 		*/
-		for(int i=0; i<rawCells.size();i++) {
+		String chainDirection; Cell rawCell;
+		
 
-		}
 	}
 
 	// this method will return every cells near the appointed cell.

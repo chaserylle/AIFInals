@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d944ca3-15f6-4ded-a53f-e976d41c8632" name="Default" comment="finder of near cells. this return arraylist of cell">
+    <list default="true" id="2d944ca3-15f6-4ded-a53f-e976d41c8632" name="Default" comment="fixing some error that might">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
@@ -17,11 +17,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="229" column="45" lean-forward="true" selection-start-line="229" selection-start-column="45" selection-end-line="229" selection-end-column="45" />
+            <state relative-caret-position="175">
+              <caret line="231" column="8" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6334#6340#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -31,7 +30,7 @@
         <entry file="file://$PROJECT_DIR$/src/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
               <folding>
                 <element signature="e#985#986#0" expanded="true" />
               </folding>
@@ -61,17 +60,16 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="y" value="126" />
+    <option name="width" value="1170" />
+    <option name="height" value="894" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -89,12 +87,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544623725024" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544629880564" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -161,7 +160,9 @@
       <updated>1544468516178</updated>
       <workItem from="1544603634314" duration="2417000" />
       <workItem from="1544611559777" duration="2840000" />
-      <workItem from="1544617953748" duration="5757000" />
+      <workItem from="1544617953748" duration="7048000" />
+      <workItem from="1544628229534" duration="222000" />
+      <workItem from="1544629318622" duration="1002000" />
     </task>
     <task id="LOCAL-00001" summary="Explaining comment for the chaining">
       <created>1544612093375</created>
@@ -198,17 +199,24 @@
       <option name="project" value="LOCAL" />
       <updated>1544621160994</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refining process... help">
+      <created>1544624134484</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1544624134484</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11014000" />
+    <option name="totallyTimeSpent" value="13529000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="653" height="687" extended-state="0" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11129848" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13927126" />
       <window_info id="Structure" order="1" weight="0.16910689" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -224,7 +232,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3295129" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.26998225" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -248,7 +256,8 @@
     <MESSAGE value="added 'boolean up' to check weather it is upper in a column." />
     <MESSAGE value="modifying the board initialization." />
     <MESSAGE value="finder of near cells. this return arraylist of cell" />
-    <option name="LAST_COMMIT_MESSAGE" value="finder of near cells. this return arraylist of cell" />
+    <MESSAGE value="refining process... help" />
+    <option name="LAST_COMMIT_MESSAGE" value="refining process... help" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Move.java">
@@ -261,7 +270,7 @@
     <entry file="file://$PROJECT_DIR$/src/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
           <folding>
             <element signature="e#985#986#0" expanded="true" />
           </folding>
@@ -270,11 +279,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="229" column="45" lean-forward="true" selection-start-line="229" selection-start-column="45" selection-end-line="229" selection-end-column="45" />
+        <state relative-caret-position="175">
+          <caret line="231" column="8" selection-start-line="231" selection-start-column="8" selection-end-line="231" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6334#6340#0" expanded="true" />
           </folding>
         </state>
       </provider>
