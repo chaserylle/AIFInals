@@ -13,12 +13,12 @@ public class Board {
 		for (int i=0; i<=8; i++) {
 			if(i%2!=0) {
 				for(int x=0; x<6; x++) {
-					board[i][x] = new Cell("_", x, i);
+					board[i][x] = new Cell("_", x, i,true);
 //					System.out.print(board[i][x].getColumn() + ":" + board[i][x].getRow() + "    ");
 				}
 			}else {
 				for(int x=0; x<7; x++) {
-					board[i][x] = new Cell("_", x, i);
+					board[i][x] = new Cell("_", x, i,false);
 //					System.out.print(board[i][x].getColumn() + ":" + board[i][x].getRow() + "    ");
 				}
 			}
