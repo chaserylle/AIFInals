@@ -14,7 +14,8 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String playtime = "y";
+		boolean playtime =  true;
+		int choice;
 		String playerID;
 		String oponentID;
 		String currentPlayer;
@@ -46,28 +47,47 @@ public class Game {
 		oponentID = kbd.next();
 		System.out.println();
 		
-		System.out.print("Who goes first? (R or G): ");
-		currentPlayer = kbd.next();
-		
-//		while(playtime.equals('y')) {
-			if(currentPlayer.equals(playerID)) {
-				X.check(playerID, oponentID);
-				currentPlayer = oponentID;
+		while(playtime) {
+			System.out.println("----OPTIONS---");
+			System.out.println("1. insert oponent tile");
+			System.out.println("2. next move");
+			
+			System.out.print("Choice: ");
+			choice = kbd.nextInt();
+			switch (choice) {
+				case 1:
+					System.out.print("Enter column: ");
+					int oponentColumn = kbd.nextInt();
+					System.out.print("Enter row: ");
+					int oponentRow = kbd.nextInt();
+					X.insertOponentTile(oponentColumn, oponentRow, oponentID, playerID);
+					currentPlayer = playerID;
+					break;
+				case 2:
+					X.check(playerID, oponentID);
+					currentPlayer = oponentID;
+					break;
 			}
-			else {
-				System.out.print("Enter column: ");
-				int oponentColumn = kbd.nextInt();
-				System.out.print("Enter row: ");
-				int oponentRow = kbd.nextInt();
-				X.insertOponentTile(oponentColumn, oponentRow, oponentID, playerID);
-				currentPlayer = playerID;
-			}
-				
-				
-			System.out.print("Continue (press 'y'): ");
-			playtime = kbd.next();
-//		}
+		}
 		
+		
+		
+//			if(currentPlayer.equals(playerID)) {
+//				X.check(playerID, oponentID);
+//				currentPlayer = oponentID;
+//			}
+//			else {
+//				System.out.print("Enter column: ");
+//				int oponentColumn = kbd.nextInt();
+//				System.out.print("Enter row: ");
+//				int oponentRow = kbd.nextInt();
+//				X.insertOponentTile(oponentColumn, oponentRow, oponentID, playerID);
+//				currentPlayer = playerID;
+//				System.out.println(currentPlayer);
+//			}
+//			System.out.print("Continue (press 'y'): ");
+//			playtime = kbd.next();
+//		
 		
 //		boolean loop = true;
 //		while(loop) {
