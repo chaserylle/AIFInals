@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 /**
  * @author Chasey
  *
@@ -6,6 +6,7 @@
 public class Board {
 
 	Cell[][] board = new Cell[9][8];
+	ArrayList<Cell> nextCells = new ArrayList<Cell>();
 	
 	public void generateBoard() {
 		
@@ -152,6 +153,31 @@ public class Board {
 			// TODO Auto-generated catch block
 		}
 		return occupied;
+	}
+
+	/**
+	 * @param column
+	 * @param row
+	 * @param opponent_id
+	 * 	where no of row is less than other cell - up
+	 * 	where no of row is greater than other cell - down
+	 *
+	 * 	below is possible chains of cells
+     *
+	 * 	(upper or lower move)
+	 * 	=> upper - y++ , lower - y--
+	 * 	(upper right)
+	 * 	=> if(up) x++ y++ if(down) x++
+	 * 	(upper left)
+	 * 	=> if(up) x-- y++ if(down) x--
+	 * 	(lower right)
+	 * 	=> if(up) x++  if(down) x++y--
+     * 	(lower left)
+     * 	=> if(up) x-- if(down) x-- y--
+	 */
+	public void fillNextCell(int column, int row , String opponent_id){
+
+		checkNeighbor(column,row,opponent_id);
 	}
 	
 //	public int cellsToTheTop(int column, int row, String oponent) {
