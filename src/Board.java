@@ -120,29 +120,6 @@ public class Board {
 					if(board[column][row].getOccupied().equals(playerID)) {
 						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
 						
-						//check if opponent is on top
-						if(checkNeighbor(column, row+t, oponentID)) {
-							while(checkNeighbor(column, row+t, oponentID)) {
-								top++;
-								t++;
-							}
-						}
-						System.out.println("top: " + top);
-						
-						//check if opponent is on the upper right
-						if(checkNeighbor(column+ur, row+ur, oponentID)) {
-							while(checkNeighbor(column+ur, row+ur, oponentID)) {
-								upperRight++;
-								ur++;
-							}
-//							if(board[column+ur][row+ur].getOccupied()=="-" && ur<=least) {
-//								nextMoveColumn = column+ur;
-//								nextMoveRow = row+ur;
-//								least = ur;
-//								board[column+ur+1][row+ur+1].setOccupied(playerID);
-//							}
-						}
-						System.out.println("upper right: "+upperRight);
 					}
 				}
 			}
@@ -151,7 +128,7 @@ public class Board {
 	
 	public boolean checkNeighbor(int column, int row, String id) {
 		boolean occupied = false;
-		if(board[column][row]!=null && column<9 && row<6) {
+		if(board[column][row]!=null) {
 			if(board[column][row].getOccupied().equals(id))
 				occupied = true; 
 		}
