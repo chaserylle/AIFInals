@@ -93,21 +93,19 @@ public class Board {
 	public void insertOponentTile(int column, int row, String oponent) {
 		boolean closed = false;
 		board[column][row].setOccupied(oponent);
-		while(!closed) {
-			
-		}
+//		while(!closed) {
+//			
+//		}
 		printBoard();
 	}
 	
 	public void nextMove(String playerID, String oponentID) {
-		int t = 1;
-		int ur = 1;
 		int top = 0;
 		int bottom = 0;
-		int upperRight = 0;
-		int lowerRight = 0;
-		int upperLeft = 0;
-		int lowerRght = 0;
+		int upperRight = 1;
+		int lowerRight = 1;
+		int upperLeft = 1;
+		int lowerRght = 1;
 		
 		int least = 100;
 	
@@ -120,6 +118,23 @@ public class Board {
 					if(board[column][row].getOccupied().equals(playerID)) {
 						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
 						
+						//check upper right
+						if(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
+							while(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
+								upperRight++; // upper right
+							}
+						}
+						
+						System.out.println("upper right: " + (upperRight-1)); // delete this late
+						
+						//check lower right
+						if(checkNeighbor(column+lowerRight, row, oponentID)) {
+							while(checkNeighbor(column+lowerRight, row, oponentID)) {
+								lowerRight++; // lower right
+							}
+						}
+						
+						System.out.println("lower right: " + (lowerRight-1)); //delete later
 					}
 				}
 			}
@@ -128,9 +143,13 @@ public class Board {
 	
 	public boolean checkNeighbor(int column, int row, String id) {
 		boolean occupied = false;
-		if(board[column][row]!=null) {
-			if(board[column][row].getOccupied().equals(id))
-				occupied = true; 
+		try {
+			if(board[column][row]!=null) {
+				if(board[column][row].getOccupied().equals(id))
+					occupied = true; 
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 		}
 		return occupied;
 	}

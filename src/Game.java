@@ -14,7 +14,7 @@ public class Game {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		boolean playtime = true;
+		String playtime = "y";
 		String playerID;
 		String oponentID;
 		String currentPlayer;
@@ -49,16 +49,23 @@ public class Game {
 		System.out.print("Who goes first? (R or G): ");
 		currentPlayer = kbd.next();
 		
-//		while(playtime) {
+//		while(playtime.equals('y')) {
 			if(currentPlayer.equals(playerID)) {
 				X.nextMove(playerID, oponentID);
+				currentPlayer = oponentID;
 			}
-			else
+			else {
 				System.out.print("Enter column: ");
 				int oponentColumn = kbd.nextInt();
 				System.out.print("Enter row: ");
 				int oponentRow = kbd.nextInt();
 				X.insertOponentTile(oponentColumn, oponentRow, oponentID);
+				currentPlayer = playerID;
+			}
+				
+				
+			System.out.print("Continue (press 'y'): ");
+			playtime = kbd.next();
 //		}
 		
 		
