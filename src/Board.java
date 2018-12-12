@@ -1,5 +1,3 @@
-import com.sun.tools.javac.comp.Todo;
-
 import java.util.ArrayList;
 /**
  * @author Chasey
@@ -83,11 +81,11 @@ public class Board {
 	public void setInitialState(int column, int row, String top, String bottom) {
 //		boolean valid = true;
 		board[column][row+1].setOccupied(top); //top
-		board[column+1][row+1].setOccupied(bottom); //upper right
-		board[column+1][row].setOccupied(top); //lower right
+		board[column+1][row].setOccupied(bottom); //upper right
+		board[column+1][row-1].setOccupied(top); //lower right
 		board[column][row-1].setOccupied(bottom); //bottom
-		board[column-1][row].setOccupied(top); // lower left
-		board[column-1][row+1].setOccupied(bottom); // upper left
+		board[column-1][row-1].setOccupied(top); // lower left
+		board[column-1][row].setOccupied(bottom); // upper left
 		
 		printBoard();
 
@@ -103,8 +101,8 @@ public class Board {
 	}
 	
 	public void nextMove(String playerID, String oponentID) {
-		int top = 0;
-		int bottom = 0;
+		int top = 1;
+		int bottom = 1;
 		int upperRight = 1;
 		int lowerRight = 1;
 		int upperLeft = 1;
@@ -122,58 +120,53 @@ public class Board {
 						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
 						
 						//check upper right
-						if(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
-							while(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
-								upperRight++; // upper right
-							}
+						if(checkNeighbor(column+1, row, oponentID)) {
+							System.out.println("enemy: " + (column+1) + ":" + (row) );
+						}
+						if(checkNeighbor(column+1, row+1, oponentID)) {
+							System.out.println("enemy: " + (column+1) + ":" + (row) );
 						}
 						
-						System.out.println("upper right: " + (upperRight-1)); // delete this later
+						
+//						System.out.println("upper right: " + (upperRight-1)); // delete this later
 						
 						//check lower right
-						if(checkNeighbor(column+lowerRight, row, oponentID)) {
-							while(checkNeighbor(column+lowerRight, row, oponentID)) {
-								lowerRight++; // lower right
-							}
+						if(checkNeighbor(column+1, row-1, oponentID)) {
+							System.out.println("enemy: " + (column+1) + ":" + (row-1));
 						}
 						
-						System.out.println("lower right: " + (lowerRight-1)); //delete later
+//						System.out.println("lower right: " + (lowerRight-1)); //delete later
 						
 						//check bottom
-						if(checkNeighbor(column, row-bottom, oponentID)) {
-							while(checkNeighbor(column, row-bottom, oponentID)) {
-								bottom++;
-							}
+						if(checkNeighbor(column, row-1, oponentID)) {
+							System.out.println("enemy: " + (column) + ":" + (row-1));
 						}
 						
-						System.out.println("bottom: " + (bottom-1)); //delete later
+//						System.out.println("bottom: " + (bottom-1)); //delete later
 						
 						//check lower left
-						if(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
-							while(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
-								lowerLeft++; // lower left
-							}
+						if(checkNeighbor(column-1, row-1, oponentID)) {
+							System.out.println("enemy: " + (column-1) + ":" + (row-1));
 						}
 						
-						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
+//						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
 						
 						//check upper left
-						if(checkNeighbor(column-upperLeft, row, oponentID)) {
-							while(checkNeighbor(column-upperLeft, row, oponentID)) {
-								upperLeft++; // upper left
-							}
+						if(checkNeighbor(column-1, row+1, oponentID)) {
+							System.out.println("enemy: " + (column-1) + ":" + (row+1));
+						}
+						if(checkNeighbor(column-1, row, oponentID)) {
+							System.out.println("enemy: " + (column-1) + ":" + (row));
 						}
 						
-						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
+//						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
 						
 						//check top
-						if(checkNeighbor(column, row+top, oponentID)) {
-							while(checkNeighbor(column, row+top, oponentID)) {
-								top++; // upper left
-							}
+						if(checkNeighbor(column, row+1, oponentID)) {
+							System.out.println("enemy: " + (column) + ":" + (row+1));
 						}
 						
-						System.out.println("top: " + (top-1)); //delete later
+//						System.out.println("top: " + (top-1)); //delete later
 					}
 				}
 			}
@@ -214,63 +207,6 @@ public class Board {
      * 	=> if(up) x-- if(down) x-- y--
 	 */
 	public void fillNextCell(int column, int row , String opponent_id){
-		if(next){
-
-		}
-
-	}
-	// this method will every cells near the appointed cell.
-	public ArrayList<Cell> cellsBesides(int column, int row, String opponet_id){
-		//this will store the besides things
-		ArrayList<Cell> cells = new ArrayList<Cell>();
-		//upper
-		try {
-			cells.add(board[column][row++]);
-		}catch (Exception e){}
-		//lower
-		try {
-			cells.add(board[column][row--]);
-		}catch (Exception e){}
-
-		//upper-right
-
-		try {
-			if (board[column][row].getUp()) {
-				cells.add(board[column++][row++]);
-			} else {
-				cells.add(board[column++][row]);
-			}
-		}catch(Exception e){}
-
-		//upper-left
-
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column--][row++]);
-			}else{
-				cells.add(board[column--][row]);
-			}
-		}catch (Exception e){}
-
-		//lower-right
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column++][row]);
-			}else{
-				cells.add(board[column++][row--]);
-			}
-		}catch(Exception e){}
-
-		//lower-left
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column--][row]);
-			}else{
-				cells.add(board[column--][row--]);
-			}
-		}catch(Exception e){}
-
-		return cells;
 	}
 	
 //	public int cellsToTheTop(int column, int row, String oponent) {
