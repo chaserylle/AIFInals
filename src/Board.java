@@ -105,7 +105,7 @@ public class Board {
 		int upperRight = 1;
 		int lowerRight = 1;
 		int upperLeft = 1;
-		int lowerRght = 1;
+		int lowerLeft = 1;
 		
 		int least = 100;
 	
@@ -125,7 +125,7 @@ public class Board {
 							}
 						}
 						
-						System.out.println("upper right: " + (upperRight-1)); // delete this late
+						System.out.println("upper right: " + (upperRight-1)); // delete this later
 						
 						//check lower right
 						if(checkNeighbor(column+lowerRight, row, oponentID)) {
@@ -135,6 +135,42 @@ public class Board {
 						}
 						
 						System.out.println("lower right: " + (lowerRight-1)); //delete later
+						
+						//check bottom
+						if(checkNeighbor(column, row-bottom, oponentID)) {
+							while(checkNeighbor(column, row-bottom, oponentID)) {
+								bottom++;
+							}
+						}
+						
+						System.out.println("bottom: " + (bottom-1)); //delete later
+						
+						//check lower left
+						if(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
+							while(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
+								lowerLeft++; // lower left
+							}
+						}
+						
+						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
+						
+						//check upper left
+						if(checkNeighbor(column-upperLeft, row, oponentID)) {
+							while(checkNeighbor(column-upperLeft, row, oponentID)) {
+								upperLeft++; // upper left
+							}
+						}
+						
+						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
+						
+						//check top
+						if(checkNeighbor(column, row+top, oponentID)) {
+							while(checkNeighbor(column, row+top, oponentID)) {
+								top++; // upper left
+							}
+						}
+						
+						System.out.println("top: " + (top-1)); //delete later
 					}
 				}
 			}
