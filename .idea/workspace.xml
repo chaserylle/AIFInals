@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2d944ca3-15f6-4ded-a53f-e976d41c8632" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2d944ca3-15f6-4ded-a53f-e976d41c8632" name="Default" comment="Explaining comment for the chaining">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hexed.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hexed.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Cell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Move.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="175" column="34" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
+            <state relative-caret-position="420">
+              <caret line="175" column="38" lean-forward="true" selection-start-line="175" selection-start-column="38" selection-end-line="175" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -149,12 +142,20 @@
       <option name="presentableId" value="Default" />
       <updated>1544468516178</updated>
       <workItem from="1544603634314" duration="2417000" />
-      <workItem from="1544611559777" duration="278000" />
+      <workItem from="1544611559777" duration="545000" />
     </task>
+    <task id="LOCAL-00001" summary="Explaining comment for the chaining">
+      <created>1544612093375</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1544612093375</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2695000" />
+    <option name="totallyTimeSpent" value="2962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -195,11 +196,15 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Explaining comment for the chaining" />
+    <option name="LAST_COMMIT_MESSAGE" value="Explaining comment for the chaining" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="175" column="34" selection-start-line="175" selection-start-column="34" selection-end-line="175" selection-end-column="34" />
+        <state relative-caret-position="420">
+          <caret line="175" column="38" lean-forward="true" selection-start-line="175" selection-start-column="38" selection-end-line="175" selection-end-column="38" />
         </state>
       </provider>
     </entry>
