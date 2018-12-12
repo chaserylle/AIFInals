@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 /**
- * @author Chasey
+ * @author Chasey & Kyeongho
  *
  */
 public class Board {
@@ -91,28 +91,18 @@ public class Board {
 
 	}
 	
-	public void insertOponentTile(int column, int row, String oponent) {
+	public void insertOponentTile(int column, int row, String oponent , String playerID) {
 		boolean closed = false;
 		board[column][row].setOccupied(oponent);
-//		while(!closed) {
-//			
-//		}
+		ArrayList<Cell> toChange = check(oponent, playerID);
+		for(int i=0; i<toChange.size(); i++) {
+			board[toChange.get(i).getColumn()][toChange.get(i).getRow()].setOccupied(oponent);
+		}
 		printBoard();
 	}
 	
-	public void nextMove(String playerID, String oponentID) {
-		int top = 1;
-		int bottom = 1;
-		int upperRight = 1;
-		int lowerRight = 1;
-		int upperLeft = 1;
-		int lowerLeft = 1;
-		
-		int least = 100;
-	
-		int nextMoveColumn;
-		int nextMoveRow;
-		
+	public ArrayList<Cell> check(String playerID, String oponentID) {
+		ArrayList<Cell> enemies = new ArrayList<Cell>();
 		for(int column = 0; column < 9; column++) {
 			for(int row = 0; row < board[column].length; row++) {
 				if(board[column][row]!=null) {
@@ -122,9 +112,11 @@ public class Board {
 						//check upper right
 						if(checkNeighbor(column+1, row, oponentID)) {
 							System.out.println("enemy: " + (column+1) + ":" + (row) );
+							enemies.add(board[column+1][row]);
 						}
 						if(checkNeighbor(column+1, row+1, oponentID)) {
-							System.out.println("enemy: " + (column+1) + ":" + (row) );
+							System.out.println("enemy: " + (column+1) + ":" + (row+1) );
+							enemies.add(board[column+1][row+1]);
 						}
 						
 						
@@ -133,6 +125,7 @@ public class Board {
 						//check lower right
 						if(checkNeighbor(column+1, row-1, oponentID)) {
 							System.out.println("enemy: " + (column+1) + ":" + (row-1));
+							enemies.add(board[column+1][row-1]);
 						}
 						
 //						System.out.println("lower right: " + (lowerRight-1)); //delete later
@@ -140,6 +133,7 @@ public class Board {
 						//check bottom
 						if(checkNeighbor(column, row-1, oponentID)) {
 							System.out.println("enemy: " + (column) + ":" + (row-1));
+							enemies.add(board[column][row-1]);
 						}
 						
 //						System.out.println("bottom: " + (bottom-1)); //delete later
@@ -147,6 +141,7 @@ public class Board {
 						//check lower left
 						if(checkNeighbor(column-1, row-1, oponentID)) {
 							System.out.println("enemy: " + (column-1) + ":" + (row-1));
+							enemies.add(board[column-1][row-1]);
 						}
 						
 //						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
@@ -154,9 +149,11 @@ public class Board {
 						//check upper left
 						if(checkNeighbor(column-1, row+1, oponentID)) {
 							System.out.println("enemy: " + (column-1) + ":" + (row+1));
+							enemies.add(board[column-1][row+1]);
 						}
 						if(checkNeighbor(column-1, row, oponentID)) {
 							System.out.println("enemy: " + (column-1) + ":" + (row));
+							enemies.add(board[column-1][row]);
 						}
 						
 //						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
@@ -164,6 +161,7 @@ public class Board {
 						//check top
 						if(checkNeighbor(column, row+1, oponentID)) {
 							System.out.println("enemy: " + (column) + ":" + (row+1));
+							enemies.add(board[column][row+1]);
 						}
 						
 //						System.out.println("top: " + (top-1)); //delete later
@@ -171,6 +169,8 @@ public class Board {
 				}
 			}
 		}
+		
+		return enemies;
 	}
 	
 	public boolean checkNeighbor(int column, int row, String id) {

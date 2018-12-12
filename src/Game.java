@@ -51,7 +51,7 @@ public class Game {
 		
 //		while(playtime.equals('y')) {
 			if(currentPlayer.equals(playerID)) {
-				X.nextMove(playerID, oponentID);
+				X.check(playerID, oponentID);
 				currentPlayer = oponentID;
 			}
 			else {
@@ -59,7 +59,7 @@ public class Game {
 				int oponentColumn = kbd.nextInt();
 				System.out.print("Enter row: ");
 				int oponentRow = kbd.nextInt();
-				X.insertOponentTile(oponentColumn, oponentRow, oponentID);
+				X.insertOponentTile(oponentColumn, oponentRow, oponentID, playerID);
 				currentPlayer = playerID;
 			}
 				
