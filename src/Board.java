@@ -212,8 +212,6 @@ public class Board {
      * 	=> if(up) x-- if(down) x-- y--
 	 */
 	public void fillNextCell(int column, int row , String opponent_id){
-
-		checkNeighbor(column,row,opponent_id);
 	}
 	
 //	public int cellsToTheTop(int column, int row, String oponent) {
