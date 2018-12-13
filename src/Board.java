@@ -114,7 +114,7 @@ public class Board {
 	
 	public ArrayList<Cell> check(String playerID, String oponentID) {
 		ArrayList<Cell> enemies = new ArrayList<Cell>();
-		int ul = 1;
+		int least = 100;
 		int[] coordinates = new int[2];
 		int tempCol;
 		int tempRow;
@@ -144,6 +144,10 @@ public class Board {
 									upperRight.add(board[tempCol+1][tempRow]);
 									tempCol = tempCol+1;
 								}
+								else if(checkNeighbor(tempCol+1, tempRow, "_") && upperRight.size()!=0) {
+									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									closed = true;
+								}
 								else {
 									closed = true;
 								}
@@ -153,6 +157,10 @@ public class Board {
 									upperRight.add(board[tempCol+1][tempRow+1]);
 									tempCol = tempCol+1;
 									tempRow = tempRow+1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow+1, "_") && upperRight.size()!=0) {
+									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow+1));
+									closed = true;
 								}
 								else {
 									closed = true;
@@ -172,6 +180,10 @@ public class Board {
 									tempCol = tempCol+1;
 									tempRow = tempRow-1;
 								}
+								else if(checkNeighbor(tempCol+1, tempRow-1, "_") && lowerRight.size()!=0 ) {
+									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow-1));
+									closed = true;
+								}
 								else {
 									closed = true;
 								}
@@ -180,6 +192,10 @@ public class Board {
 									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow));
 									lowerRight.add(board[tempCol+1][tempRow]);
 									tempCol = tempCol+1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow, "_") && lowerRight.size()!=0) {
+									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									closed = true;
 								}
 								else {
 									closed = true;
@@ -198,6 +214,10 @@ public class Board {
 								System.out.println("bottom: " + (tempCol) + ":" + (tempRow-1));
 								bottom.add(board[tempCol][tempRow-1]);
 								tempRow = tempRow - 1;
+							}
+							else if(checkNeighbor(tempCol, tempRow-1, "_") && bottom.size()!=0) {
+								System.out.println("valid move " + (tempCol) + ":" + (tempRow-1));
+								closed = true;
 							}
 							else {
 								closed = true;
@@ -220,6 +240,10 @@ public class Board {
 									tempCol = tempCol-1;
 									tempRow = tempRow-1;
 								}
+								else if(checkNeighbor(tempCol-1, tempRow-1, "_") && lowerLeft.size()!=0) {
+									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow-1));
+									closed = true;
+								}
 								else {
 									closed = true;
 								}
@@ -228,6 +252,10 @@ public class Board {
 									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow));
 									lowerLeft.add(board[tempCol-1][tempRow]);
 									tempCol = tempCol-1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow, oponentID) && lowerLeft.size()!=0 ) {
+									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow));
+									closed = true;
 								}
 								else {
 									closed = true;
@@ -249,6 +277,10 @@ public class Board {
 									upperLeft.add(board[tempCol-1][tempRow]);
 									tempCol = tempCol-1;
 								}
+								else if(checkNeighbor(tempCol-1, tempRow, "_") && upperLeft.size()!=0) {
+									System.out.println("valid move " + (tempCol-1) + ":" + tempRow);
+									closed = true;
+								}
 								else {
 									closed = true;
 								}
@@ -258,6 +290,10 @@ public class Board {
 									upperLeft.add(board[tempCol-1][tempRow+1]);
 									tempCol = tempCol-1;
 									tempRow = tempRow+1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow+1, "_") && upperLeft.size()!=0) {
+									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow+1));
+									closed = true;
 								}
 								else {
 									closed = true;
@@ -277,6 +313,10 @@ public class Board {
 								top.add(board[tempCol][tempRow+1]);
 								tempRow = tempRow + 1;
 							}
+							else if(checkNeighbor(tempCol, tempRow+1, "_") && top.size()!=0) {
+								System.out.println("valid move " + (tempCol) + ":" + (tempRow+1));
+								closed = true;
+							}
 							else {
 								closed = true;
 							}
@@ -287,6 +327,7 @@ public class Board {
 				}
 			}
 		}
+		
 		return enemies;
 	}
 	
@@ -392,6 +433,7 @@ public class Board {
 		}
 		return occupied;
 	}
+	
 
 	/**
 	 * @param column
