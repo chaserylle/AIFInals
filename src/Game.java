@@ -64,6 +64,7 @@ public class Game {
 				case 2:
 					int[] coordinates = X.check(playerID, oponentID);
 					System.out.println("next move: " +coordinates[0] + ":" +coordinates[1]);
+//					X.insertOponentTile(coordinates[0], coordinates[1], playerID, oponentID);
 					break;
 			}
 		}

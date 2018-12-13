@@ -113,7 +113,7 @@ public class Board {
 	
 	
 	public int[] check(String playerID, String oponentID) {
-		ArrayList<Cell> enemies = new ArrayList<Cell>();
+		ArrayList<Cell> flip = new ArrayList<Cell>();
 		int least = 100;
 		int[] nextMove = {100,100};
 		int[] no = {100,100};
@@ -132,7 +132,7 @@ public class Board {
 			for(int row = 0; row < board[column].length; row++) {
 				if(board[column][row]!=null) {
 					if(board[column][row].getOccupied().equals(playerID)) {
-						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
+//						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
 						
 						//check upper right
 						tempCol = column;
@@ -141,14 +141,15 @@ public class Board {
 						while(!closed) {
 							if(tempCol%2==0) {
 								if(checkNeighbor(tempCol+1, tempRow, oponentID)) {
-									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow));
+//									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow));
 									upperRight.add(board[tempCol+1][tempRow]);
 									tempCol = tempCol+1;
 								}
 								else if(checkNeighbor(tempCol+1, tempRow, "_") && upperRight.size()!=0) {
-									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
 									if(upperRight.size()<=least) {
 										least = upperRight.size();
+										flip = upperRight;
 										nextMove[0] =  tempCol+1;
 										nextMove[1] = tempRow;
 									}
@@ -159,15 +160,16 @@ public class Board {
 								}
 							}else {
 								if(checkNeighbor(tempCol+1, tempRow+1, oponentID)) {
-									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow+1));
+//									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow+1));
 									upperRight.add(board[tempCol+1][tempRow+1]);
 									tempCol = tempCol+1;
 									tempRow = tempRow+1;
 								}
 								else if(checkNeighbor(tempCol+1, tempRow+1, "_") && upperRight.size()!=0) {
-									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow+1));
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow+1));
 									if(upperRight.size()<=least) {
 										least = upperRight.size();
+										flip = upperRight;
 										nextMove[0] =  tempCol+1;
 										nextMove[1] = tempRow+1;
 									}
@@ -186,15 +188,16 @@ public class Board {
 						while(!closed) {
 							if(tempCol%2==0) {
 								if(checkNeighbor(tempCol+1, tempRow-1, oponentID)) {
-									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow-1));
+//									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow-1));
 									lowerRight.add(board[tempCol+1][tempRow-1]);
 									tempCol = tempCol+1;
 									tempRow = tempRow-1;
 								}
 								else if(checkNeighbor(tempCol+1, tempRow-1, "_") && lowerRight.size()!=0 ) {
-									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow-1));
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow-1));
 									if(lowerRight.size()<=least) {
 										least = lowerRight.size();
+										flip = lowerRight;
 										nextMove[0] =  tempCol+1;
 										nextMove[1] = tempRow-1;
 									}
@@ -205,14 +208,15 @@ public class Board {
 								}
 							}else {
 								if(checkNeighbor(tempCol+1, tempRow, oponentID)) {
-									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow));
+//									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow));
 									lowerRight.add(board[tempCol+1][tempRow]);
 									tempCol = tempCol+1;
 								}
 								else if(checkNeighbor(tempCol+1, tempRow, "_") && lowerRight.size()!=0) {
-									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
 									if(lowerRight.size()<=least) {
 										least = lowerRight.size();
+										flip = lowerRight;
 										nextMove[0] =  tempCol+1;
 										nextMove[1] = tempRow;
 									}
@@ -232,14 +236,15 @@ public class Board {
 						closed = false;
 						while(!closed) {
 							if(checkNeighbor(tempCol, tempRow-1, oponentID)) {
-								System.out.println("bottom: " + (tempCol) + ":" + (tempRow-1));
+//								System.out.println("bottom: " + (tempCol) + ":" + (tempRow-1));
 								bottom.add(board[tempCol][tempRow-1]);
 								tempRow = tempRow - 1;
 							}
 							else if(checkNeighbor(tempCol, tempRow-1, "_") && bottom.size()!=0) {
-								System.out.println("valid move " + (tempCol) + ":" + (tempRow-1));
+//								System.out.println("valid move " + (tempCol) + ":" + (tempRow-1));
 								if(bottom.size()<=least) {
 									least = bottom.size();
+									flip = bottom;
 									nextMove[0] =  tempCol;
 									nextMove[1] = tempRow-1;
 								}
@@ -261,15 +266,16 @@ public class Board {
 						while(!closed) {
 							if(tempCol%2==0) {
 								if(checkNeighbor(tempCol-1, tempRow-1, oponentID)) {
-									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow-1));
+//									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow-1));
 									lowerLeft.add(board[tempCol-1][tempRow-1]);
 									tempCol = tempCol-1;
 									tempRow = tempRow-1;
 								}
 								else if(checkNeighbor(tempCol-1, tempRow-1, "_") && lowerLeft.size()!=0) {
-									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow-1));
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow-1));
 									if(lowerLeft.size()<=least) {
 										least = lowerLeft.size();
+										flip = lowerLeft;
 										nextMove[0] =  tempCol-1;
 										nextMove[1] = tempRow-1;
 									}
@@ -280,14 +286,15 @@ public class Board {
 								}
 							}else {
 								if(checkNeighbor(tempCol-1, tempRow, oponentID)) {
-									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow));
+//									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow));
 									lowerLeft.add(board[tempCol-1][tempRow]);
 									tempCol = tempCol-1;
 								}
 								else if(checkNeighbor(tempCol-1, tempRow, oponentID) && lowerLeft.size()!=0 ) {
-									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow));
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow));
 									if(lowerLeft.size()<=least) {
 										least = lowerLeft.size();
+										flip = lowerLeft;
 										nextMove[0] =  tempCol-1;
 										nextMove[1] = tempRow;
 									}
@@ -309,14 +316,15 @@ public class Board {
 							
 							if(tempCol%2==0) {
 								if(checkNeighbor(tempCol-1, tempRow, oponentID)) {
-									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow));
+//									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow));
 									upperLeft.add(board[tempCol-1][tempRow]);
 									tempCol = tempCol-1;
 								}
 								else if(checkNeighbor(tempCol-1, tempRow, "_") && upperLeft.size()!=0) {
-									System.out.println("valid move " + (tempCol-1) + ":" + tempRow);
+//									System.out.println("valid move " + (tempCol-1) + ":" + tempRow);
 									if(upperLeft.size()<=least) {
 										least = upperLeft.size();
+										flip = upperLeft;
 										nextMove[0] =  tempCol-1;
 										nextMove[1] = tempRow;
 									}
@@ -327,15 +335,16 @@ public class Board {
 								}
 							}else {
 								if(checkNeighbor(tempCol-1, tempRow+1, oponentID)) {
-									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow+1));
+//									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow+1));
 									upperLeft.add(board[tempCol-1][tempRow+1]);
 									tempCol = tempCol-1;
 									tempRow = tempRow+1;
 								}
 								else if(checkNeighbor(tempCol-1, tempRow+1, "_") && upperLeft.size()!=0) {
-									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow+1));
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow+1));
 									if(upperLeft.size()<=least) {
 										least = upperLeft.size();
+										flip = upperLeft;
 										nextMove[0] =  tempCol-1;
 										nextMove[1] = tempRow+1;
 									}
@@ -355,14 +364,15 @@ public class Board {
 						closed = false;
 						while(!closed) {
 							if(checkNeighbor(tempCol, tempRow+1, oponentID)) {
-								System.out.println("top: " + (tempCol) + ":" + (tempRow+1));
+//								System.out.println("top: " + (tempCol) + ":" + (tempRow+1));
 								top.add(board[tempCol][tempRow+1]);
 								tempRow = tempRow + 1;
 							}
 							else if(checkNeighbor(tempCol, tempRow+1, "_") && top.size()!=0) {
-								System.out.println("valid move " + (tempCol) + ":" + (tempRow+1));
+//								System.out.println("valid move " + (tempCol) + ":" + (tempRow+1));
 								if(top.size()<=least) {
 									least = top.size();
+									flip = top;
 									nextMove[0] =  tempCol;
 									nextMove[1] = tempRow+1;
 								}
@@ -380,6 +390,11 @@ public class Board {
 		}
 		if(nextMove.equals(no)) {
 			nextMove = null;
+		}else {
+//			System.out.println(flip.get(0));
+			board[nextMove[0]][nextMove[1]].setOccupied(playerID);
+			flipTiles(playerID, oponentID, flip);
+			printBoard();
 		}
 		return nextMove;
 	}
@@ -485,6 +500,12 @@ public class Board {
 			// TODO Auto-generated catch block
 		}
 		return occupied;
+	}
+	
+	public void flipTiles(String playerID, String opponentID, ArrayList<Cell> toFlip) {
+		for(int i=0; i<toFlip.size(); i++) {
+			board[toFlip.get(i).getColumn()][toFlip.get(i).getRow()].setOccupied(playerID);
+		}
 	}
 	
 
