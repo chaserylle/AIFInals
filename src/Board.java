@@ -112,10 +112,11 @@ public class Board {
 	}
 	
 	
-	public ArrayList<Cell> check(String playerID, String oponentID) {
+	public int[] check(String playerID, String oponentID) {
 		ArrayList<Cell> enemies = new ArrayList<Cell>();
 		int least = 100;
-		int[] coordinates = new int[2];
+		int[] nextMove = {100,100};
+		int[] no = {100,100};
 		int tempCol;
 		int tempRow;
 		
@@ -146,6 +147,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol+1, tempRow, "_") && upperRight.size()!=0) {
 									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									if(upperRight.size()<=least) {
+										least = upperRight.size();
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow;
+									}
 									closed = true;
 								}
 								else {
@@ -160,6 +166,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol+1, tempRow+1, "_") && upperRight.size()!=0) {
 									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow+1));
+									if(upperRight.size()<=least) {
+										least = upperRight.size();
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow+1;
+									}
 									closed = true;
 								}
 								else {
@@ -182,6 +193,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol+1, tempRow-1, "_") && lowerRight.size()!=0 ) {
 									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow-1));
+									if(lowerRight.size()<=least) {
+										least = lowerRight.size();
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow-1;
+									}
 									closed = true;
 								}
 								else {
@@ -195,6 +211,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol+1, tempRow, "_") && lowerRight.size()!=0) {
 									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									if(lowerRight.size()<=least) {
+										least = lowerRight.size();
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow;
+									}
 									closed = true;
 								}
 								else {
@@ -217,6 +238,11 @@ public class Board {
 							}
 							else if(checkNeighbor(tempCol, tempRow-1, "_") && bottom.size()!=0) {
 								System.out.println("valid move " + (tempCol) + ":" + (tempRow-1));
+								if(bottom.size()<=least) {
+									least = bottom.size();
+									nextMove[0] =  tempCol;
+									nextMove[1] = tempRow-1;
+								}
 								closed = true;
 							}
 							else {
@@ -242,6 +268,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol-1, tempRow-1, "_") && lowerLeft.size()!=0) {
 									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow-1));
+									if(lowerLeft.size()<=least) {
+										least = lowerLeft.size();
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow-1;
+									}
 									closed = true;
 								}
 								else {
@@ -255,6 +286,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol-1, tempRow, oponentID) && lowerLeft.size()!=0 ) {
 									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow));
+									if(lowerLeft.size()<=least) {
+										least = lowerLeft.size();
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow;
+									}
 									closed = true;
 								}
 								else {
@@ -279,6 +315,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol-1, tempRow, "_") && upperLeft.size()!=0) {
 									System.out.println("valid move " + (tempCol-1) + ":" + tempRow);
+									if(upperLeft.size()<=least) {
+										least = upperLeft.size();
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow;
+									}
 									closed = true;
 								}
 								else {
@@ -293,6 +334,11 @@ public class Board {
 								}
 								else if(checkNeighbor(tempCol-1, tempRow+1, "_") && upperLeft.size()!=0) {
 									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow+1));
+									if(upperLeft.size()<=least) {
+										least = upperLeft.size();
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow+1;
+									}
 									closed = true;
 								}
 								else {
@@ -315,6 +361,11 @@ public class Board {
 							}
 							else if(checkNeighbor(tempCol, tempRow+1, "_") && top.size()!=0) {
 								System.out.println("valid move " + (tempCol) + ":" + (tempRow+1));
+								if(top.size()<=least) {
+									least = top.size();
+									nextMove[0] =  tempCol;
+									nextMove[1] = tempRow+1;
+								}
 								closed = true;
 							}
 							else {
@@ -327,8 +378,10 @@ public class Board {
 				}
 			}
 		}
-		
-		return enemies;
+		if(nextMove.equals(no)) {
+			nextMove = null;
+		}
+		return nextMove;
 	}
 	
 	//for one tile only

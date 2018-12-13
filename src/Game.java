@@ -18,7 +18,6 @@ public class Game {
 		int choice;
 		String playerID;
 		String oponentID;
-		String currentPlayer;
 		Game G = new Game();
 		Scanner kbd = new Scanner(System.in);
 		Board X = new Board();
@@ -61,11 +60,10 @@ public class Game {
 					System.out.print("Enter row: ");
 					int oponentRow = kbd.nextInt();
 					X.insertOponentTile(oponentColumn, oponentRow, oponentID, playerID);
-					currentPlayer = playerID;
 					break;
 				case 2:
-					X.check(playerID, oponentID);
-					currentPlayer = oponentID;
+					int[] coordinates = X.check(playerID, oponentID);
+					System.out.println("next move: " +coordinates[0] + ":" +coordinates[1]);
 					break;
 			}
 		}
