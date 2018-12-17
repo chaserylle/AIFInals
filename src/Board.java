@@ -1,5 +1,3 @@
-import com.sun.tools.javac.comp.Todo;
-
 import java.util.ArrayList;
 /**
  * @author Chasey & Kyeongho
@@ -82,102 +80,413 @@ public class Board {
 	 */
 	public void setInitialState(int column, int row, String top, String bottom) {
 //		boolean valid = true;
-		board[column][row+1].setOccupied(top); //top
-		board[column+1][row+1].setOccupied(bottom); //upper right
-		board[column+1][row].setOccupied(top); //lower right
-		board[column][row-1].setOccupied(bottom); //bottom
-		board[column-1][row].setOccupied(top); // lower left
-		board[column-1][row+1].setOccupied(bottom); // upper left
+		if(column%2==0) {
+			board[column][row+1].setOccupied(top); //top
+			board[column+1][row].setOccupied(bottom); //upper right
+			board[column+1][row-1].setOccupied(top); //lower right
+			board[column][row-1].setOccupied(bottom); //bottom
+			board[column-1][row-1].setOccupied(top); // lower left
+			board[column-1][row].setOccupied(bottom); // upper left
+		}
+		else {
+			board[column][row+1].setOccupied(top); //top
+			board[column+1][row+1].setOccupied(bottom); //upper right
+			board[column+1][row].setOccupied(top); //lower right
+			board[column][row-1].setOccupied(bottom); //bottom
+			board[column-1][row].setOccupied(top); // lower left
+			board[column-1][row+1].setOccupied(bottom); // upper left
+		}
 		
 		printBoard();
 
 	}
 	
-	public void insertOponentTile(int column, int row, String oponent) {
+	public void insertOponentTile(int column, int row, String oponent , String playerID) {
 		boolean closed = false;
 		board[column][row].setOccupied(oponent);
-//		while(!closed) {
-//			
-//		}
+		ArrayList<Cell> toChange = check(oponent, playerID, column, row);
+		for(int i=0; i<toChange.size(); i++) {
+			board[toChange.get(i).getColumn()][toChange.get(i).getRow()].setOccupied(oponent);
+		}
 		printBoard();
 	}
 	
-	public void nextMove(String playerID, String oponentID) {
-		int top = 0;
-		int bottom = 0;
-		int upperRight = 1;
-		int lowerRight = 1;
-		int upperLeft = 1;
-		int lowerLeft = 1;
-		
-		int least = 100;
 	
-		int nextMoveColumn;
-		int nextMoveRow;
+	public int[] check(String playerID, String oponentID) {
+		ArrayList<Cell> flip = new ArrayList<Cell>();
+		int least = 100;
+		int[] nextMove = {100,100};
+		int[] no = {100,100};
+		int tempCol;
+		int tempRow;
 		
+		ArrayList<Cell> upperLeft = new ArrayList<Cell>();
+		ArrayList<Cell> lowerLeft = new ArrayList<Cell>();
+		ArrayList<Cell> upperRight = new ArrayList<Cell>();
+		ArrayList<Cell> lowerRight = new ArrayList<Cell>();
+		ArrayList<Cell> bottom = new ArrayList<Cell>();
+		ArrayList<Cell> top = new ArrayList<Cell>();
+		
+		boolean closed = false;
 		for(int column = 0; column < 9; column++) {
 			for(int row = 0; row < board[column].length; row++) {
 				if(board[column][row]!=null) {
 					if(board[column][row].getOccupied().equals(playerID)) {
-						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
+//						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
 						
 						//check upper right
-						if(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
-							while(checkNeighbor(column+upperRight, row+upperRight, oponentID)) {
-								upperRight++; // upper right
+						tempCol = column;
+						tempRow = row;
+						closed = false;
+						while(!closed) {
+							if(tempCol%2==0) {
+								if(checkNeighbor(tempCol+1, tempRow, oponentID)) {
+//									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow));
+									upperRight.add(board[tempCol+1][tempRow]);
+									tempCol = tempCol+1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow, "_") && upperRight.size()!=0) {
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									if(upperRight.size()<=least) {
+										least = upperRight.size();
+										flip = upperRight;
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
+							}else {
+								if(checkNeighbor(tempCol+1, tempRow+1, oponentID)) {
+//									System.out.println("upper right: " + (tempCol+1) + ":" + (tempRow+1));
+									upperRight.add(board[tempCol+1][tempRow+1]);
+									tempCol = tempCol+1;
+									tempRow = tempRow+1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow+1, "_") && upperRight.size()!=0) {
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow+1));
+									if(upperRight.size()<=least) {
+										least = upperRight.size();
+										flip = upperRight;
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow+1;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
 							}
 						}
-						
-						System.out.println("upper right: " + (upperRight-1)); // delete this later
 						
 						//check lower right
-						if(checkNeighbor(column+lowerRight, row, oponentID)) {
-							while(checkNeighbor(column+lowerRight, row, oponentID)) {
-								lowerRight++; // lower right
+						tempCol = column;
+						tempRow = row;
+						closed = false;
+						while(!closed) {
+							if(tempCol%2==0) {
+								if(checkNeighbor(tempCol+1, tempRow-1, oponentID)) {
+//									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow-1));
+									lowerRight.add(board[tempCol+1][tempRow-1]);
+									tempCol = tempCol+1;
+									tempRow = tempRow-1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow-1, "_") && lowerRight.size()!=0 ) {
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow-1));
+									if(lowerRight.size()<=least) {
+										least = lowerRight.size();
+										flip = lowerRight;
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow-1;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
+							}else {
+								if(checkNeighbor(tempCol+1, tempRow, oponentID)) {
+//									System.out.println("lower left: " + (tempCol+1) + ":" + (tempRow));
+									lowerRight.add(board[tempCol+1][tempRow]);
+									tempCol = tempCol+1;
+								}
+								else if(checkNeighbor(tempCol+1, tempRow, "_") && lowerRight.size()!=0) {
+//									System.out.println("valid move " + (tempCol+1) + ":" + (tempRow));
+									if(lowerRight.size()<=least) {
+										least = lowerRight.size();
+										flip = lowerRight;
+										nextMove[0] =  tempCol+1;
+										nextMove[1] = tempRow;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
 							}
 						}
 						
-						System.out.println("lower right: " + (lowerRight-1)); //delete later
+//						System.out.println("lower right: " + (lowerRight-1)); //delete later
 						
 						//check bottom
-						if(checkNeighbor(column, row-bottom, oponentID)) {
-							while(checkNeighbor(column, row-bottom, oponentID)) {
-								bottom++;
+						tempCol = column;
+						tempRow = row;
+						closed = false;
+						while(!closed) {
+							if(checkNeighbor(tempCol, tempRow-1, oponentID)) {
+//								System.out.println("bottom: " + (tempCol) + ":" + (tempRow-1));
+								bottom.add(board[tempCol][tempRow-1]);
+								tempRow = tempRow - 1;
+							}
+							else if(checkNeighbor(tempCol, tempRow-1, "_") && bottom.size()!=0) {
+//								System.out.println("valid move " + (tempCol) + ":" + (tempRow-1));
+								if(bottom.size()<=least) {
+									least = bottom.size();
+									flip = bottom;
+									nextMove[0] =  tempCol;
+									nextMove[1] = tempRow-1;
+								}
+								closed = true;
+							}
+							else {
+								closed = true;
 							}
 						}
 						
-						System.out.println("bottom: " + (bottom-1)); //delete later
+						
+//						System.out.println("bottom: " + (bottom-1)); //delete later
 						
 						//check lower left
-						if(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
-							while(checkNeighbor(column-lowerLeft, row-lowerLeft, oponentID)) {
-								lowerLeft++; // lower left
+						
+						tempCol = column;
+						tempRow = row;
+						closed = false;
+						while(!closed) {
+							if(tempCol%2==0) {
+								if(checkNeighbor(tempCol-1, tempRow-1, oponentID)) {
+//									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow-1));
+									lowerLeft.add(board[tempCol-1][tempRow-1]);
+									tempCol = tempCol-1;
+									tempRow = tempRow-1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow-1, "_") && lowerLeft.size()!=0) {
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow-1));
+									if(lowerLeft.size()<=least) {
+										least = lowerLeft.size();
+										flip = lowerLeft;
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow-1;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
+							}else {
+								if(checkNeighbor(tempCol-1, tempRow, oponentID)) {
+//									System.out.println("lower left: " + (tempCol-1) + ":" + (tempRow));
+									lowerLeft.add(board[tempCol-1][tempRow]);
+									tempCol = tempCol-1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow, oponentID) && lowerLeft.size()!=0 ) {
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow));
+									if(lowerLeft.size()<=least) {
+										least = lowerLeft.size();
+										flip = lowerLeft;
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
 							}
 						}
 						
-						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
+//						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
 						
+						tempCol = column;
+						tempRow = row;
+						closed = false;
 						//check upper left
-						if(checkNeighbor(column-upperLeft, row, oponentID)) {
-							while(checkNeighbor(column-upperLeft, row, oponentID)) {
-								upperLeft++; // upper left
+						while(!closed) {
+							
+							if(tempCol%2==0) {
+								if(checkNeighbor(tempCol-1, tempRow, oponentID)) {
+//									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow));
+									upperLeft.add(board[tempCol-1][tempRow]);
+									tempCol = tempCol-1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow, "_") && upperLeft.size()!=0) {
+//									System.out.println("valid move " + (tempCol-1) + ":" + tempRow);
+									if(upperLeft.size()<=least) {
+										least = upperLeft.size();
+										flip = upperLeft;
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
+							}else {
+								if(checkNeighbor(tempCol-1, tempRow+1, oponentID)) {
+//									System.out.println("upper left: " + (tempCol-1) + ":" + (tempRow+1));
+									upperLeft.add(board[tempCol-1][tempRow+1]);
+									tempCol = tempCol-1;
+									tempRow = tempRow+1;
+								}
+								else if(checkNeighbor(tempCol-1, tempRow+1, "_") && upperLeft.size()!=0) {
+//									System.out.println("valid move " + (tempCol-1) + ":" + (tempRow+1));
+									if(upperLeft.size()<=least) {
+										least = upperLeft.size();
+										flip = upperLeft;
+										nextMove[0] =  tempCol-1;
+										nextMove[1] = tempRow+1;
+									}
+									closed = true;
+								}
+								else {
+									closed = true;
+								}
 							}
 						}
 						
-						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
+//						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
 						
 						//check top
-						if(checkNeighbor(column, row+top, oponentID)) {
-							while(checkNeighbor(column, row+top, oponentID)) {
-								top++; // upper left
+						tempCol = column;
+						tempRow = row;
+						closed = false;
+						while(!closed) {
+							if(checkNeighbor(tempCol, tempRow+1, oponentID)) {
+//								System.out.println("top: " + (tempCol) + ":" + (tempRow+1));
+								top.add(board[tempCol][tempRow+1]);
+								tempRow = tempRow + 1;
+							}
+							else if(checkNeighbor(tempCol, tempRow+1, "_") && top.size()!=0) {
+//								System.out.println("valid move " + (tempCol) + ":" + (tempRow+1));
+								if(top.size()<=least) {
+									least = top.size();
+									flip = top;
+									nextMove[0] =  tempCol;
+									nextMove[1] = tempRow+1;
+								}
+								closed = true;
+							}
+							else {
+								closed = true;
 							}
 						}
 						
-						System.out.println("top: " + (top-1)); //delete later
+//						System.out.println("top: " + (top-1)); //delete later
 					}
 				}
 			}
 		}
+		if(nextMove.equals(no)) {
+			nextMove = null;
+		}else {
+//			System.out.println(flip.get(0));
+			board[nextMove[0]][nextMove[1]].setOccupied(playerID);
+			flipTiles(playerID, oponentID, flip);
+			printBoard();
+		}
+		return nextMove;
+	}
+	
+	//for one tile only
+	public ArrayList<Cell> check(String playerID, String oponentID, int c, int r) {
+		ArrayList<Cell> enemies = new ArrayList<Cell>();
+		for(int column = 0; column < 9; column++) {
+			for(int row = 0; row < board[column].length; row++) {
+				if(board[column][row]!=null) {
+					if(board[column][row].getOccupied().equals(playerID) && column==c && row==r) {
+						System.out.println(board[column][row].getColumn() +":"+ board[column][row].getRow()); 
+						
+						//check upper right
+						if(column%2==0) {
+							if(checkNeighbor(column+1, row, oponentID)) {
+								System.out.println("enemy: " + (column+1) + ":" + (row));
+								enemies.add(board[column+1][row]);
+							}
+						}else {
+							if(checkNeighbor(column+1, row+1, oponentID)) {
+								System.out.println("enemy: " + (column+1) + ":" + (row+1));
+								enemies.add(board[column+1][row+1]);
+							}
+						}
+						
+						//check lower right
+						if(column%2==0) {
+							if(checkNeighbor(column+1, row-1, oponentID)) {
+								System.out.println("enemy: " + (column+1) + ":" + (row-1));
+								enemies.add(board[column+1][row-1]);
+							}
+						}else {
+							if(checkNeighbor(column+1, row, oponentID)) {
+								System.out.println("enemy: " + (column+1) + ":" + (row));
+								enemies.add(board[column+1][row]);
+							}
+						}
+						
+//						System.out.println("lower right: " + (lowerRight-1)); //delete later
+						
+						//check bottom
+						if(checkNeighbor(column, row-1, oponentID)) {
+							System.out.println("enemy: " + (column) + ":" + (row-1));
+							enemies.add(board[column][row-1]);
+						}
+						
+//						System.out.println("bottom: " + (bottom-1)); //delete later
+						
+						//check lower left
+						if(column%2==0) {
+							if(checkNeighbor(column-1, row-1, oponentID)) {
+								System.out.println("enemy: " + (column-1) + ":" + (row-1));
+								enemies.add(board[column-1][row-1]);
+							}
+						}else {
+							if(checkNeighbor(column-1, row, oponentID)) {
+								System.out.println("enemy: " + (column-1) + ":" + (row));
+								enemies.add(board[column-1][row]);
+							}
+						}
+						
+//						System.out.println("lowerLeft: " + (lowerLeft-1)); //delete later
+						
+						//check upper left
+						if(column%2==0) {
+							if(checkNeighbor(column-1, row, oponentID)) {
+								System.out.println("enemy: " + (column-1) + ":" + (row));
+								enemies.add(board[column-1][row]);
+							}
+						}else {
+							if(checkNeighbor(column-1, row+1, oponentID)) {
+								System.out.println("enemy: " + (column-1) + ":" + (row+1));
+								enemies.add(board[column-1][row]);
+							}
+						}
+						
+//						System.out.println("upperLeft: " + (upperLeft-1)); //delete later
+						
+						//check top
+						if(checkNeighbor(column, row+1, oponentID)) {
+							System.out.println("enemy: " + (column) + ":" + (row+1));
+							enemies.add(board[column][row+1]);
+						}
+						
+//						System.out.println("top: " + (top-1)); //delete later
+					}
+				}
+			}
+		}
+		
+		return enemies;
 	}
 	
 	public boolean checkNeighbor(int column, int row, String id) {
@@ -192,6 +501,13 @@ public class Board {
 		}
 		return occupied;
 	}
+	
+	public void flipTiles(String playerID, String opponentID, ArrayList<Cell> toFlip) {
+		for(int i=0; i<toFlip.size(); i++) {
+			board[toFlip.get(i).getColumn()][toFlip.get(i).getRow()].setOccupied(playerID);
+		}
+	}
+	
 
 	/**
 	 * @param column
@@ -214,77 +530,6 @@ public class Board {
      * 	=> if(up) x-- if(down) x-- y--
 	 */
 	public void fillNextCell(int column, int row , String opponent_id){
-		ArrayList<Cell> rawCells = cellsBesides(column,row);
-
-		//first refining - remove allay's cell and empty cell.
-		ArrayList<Cell> rawCells_refinded1;
-		for(int i = 0; i<rawCells.size();i++){
-			if(rawCells.get(i).getOccupied().equals(opponent_id)){
-				rawCells_refinded1.add(rawCells.get(i));
-			}else {
-			}
-		}
-
-		/*second refining - acceleration : keep move to upward to check the end of chain. every rawcells should be checked
-			if the the end of chain is empty, that is our candidate of next cell would be checked.
-		*/
-		String chainDirection; Cell rawCell;
-		
-
-	}
-
-	// this method will return every cells near the appointed cell.
-	public ArrayList<Cell> cellsBesides(int column, int row){
-		//this will store the besides things
-		ArrayList<Cell> cells = new ArrayList<Cell>();
-		//upper
-		try {
-			cells.add(board[column][row++]);
-		}catch (Exception e){}
-		//lower
-		try {
-			cells.add(board[column][row--]);
-		}catch (Exception e){}
-
-		//upper-right
-
-		try {
-			if (board[column][row].getUp()) {
-				cells.add(board[column++][row++]);
-			} else {
-				cells.add(board[column++][row]);
-			}
-		}catch(Exception e){}
-
-		//upper-left
-
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column--][row++]);
-			}else{
-				cells.add(board[column--][row]);
-			}
-		}catch (Exception e){}
-
-		//lower-right
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column++][row]);
-			}else{
-				cells.add(board[column++][row--]);
-			}
-		}catch(Exception e){}
-
-		//lower-left
-		try {
-			if (board[column][row].getUp()){
-				cells.add(board[column--][row]);
-			}else{
-				cells.add(board[column--][row--]);
-			}
-		}catch(Exception e){}
-
-		return cells;
 	}
 	
 //	public int cellsToTheTop(int column, int row, String oponent) {
@@ -303,6 +548,3 @@ public class Board {
 //		return cells;
 //	}
 }
-	
-
-
