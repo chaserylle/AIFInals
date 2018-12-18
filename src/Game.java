@@ -63,7 +63,12 @@ public class Game {
 					break;
 				case 2:
 					int[] coordinates = X.check(playerID, oponentID);
-					System.out.println("next move: " +coordinates[0] + ":" +coordinates[1]);
+					if(coordinates[0]==100) {
+						System.out.println("invalid");
+					}else {
+						System.out.println("next move: " +coordinates[0] + ":" +coordinates[1]);
+					}
+					
 //					X.insertOponentTile(coordinates[0], coordinates[1], playerID, oponentID);
 					break;
 			}
