@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d944ca3-15f6-4ded-a53f-e976d41c8632" name="Default" comment="added cellchain, hope team review my code">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CellChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CellChain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,93 +13,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-462052685">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="4" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="4415" />
-          <entry key="txt" value="47" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="4415" />
-          <entry key="PLAIN_TEXT" value="47" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="832">
-              <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
-              <folding>
-                <element signature="e#166#172#0" expanded="true" />
-                <element signature="e#3169#3175#0" expanded="true" />
-                <element signature="e#3328#3334#0" expanded="true" />
-                <element signature="e#3381#3387#0" expanded="true" />
-                <element signature="e#3435#3441#0" expanded="true" />
-                <element signature="e#3489#3495#0" expanded="true" />
-                <element signature="e#3539#3545#0" expanded="true" />
-                <element signature="e#3586#3592#0" expanded="true" />
-                <element signature="e#12355#12361#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Cell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="64" />
-              <folding>
-                <element signature="e#896#897#0" expanded="true" />
-                <element signature="e#985#986#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CellChain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
-              <folding>
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#547#548#0" expanded="true" />
-                <element signature="e#582#583#0" expanded="true" />
-                <element signature="e#611#612#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -125,18 +45,18 @@
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
   </component>
   <component name="PhpServers">
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="1294" />
+    <option name="x" value="-9" />
+    <option name="width" value="1296" />
     <option name="height" value="1407" />
   </component>
   <component name="ProjectView">
@@ -144,6 +64,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,7 +82,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -187,7 +107,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet" factoryName="Applet">
+    <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -205,7 +125,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <properties />
       <listeners />
@@ -213,11 +133,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
+      <predefined_log_file enabled="true" id="idea.log" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -239,6 +159,7 @@
       <workItem from="1544628229534" duration="222000" />
       <workItem from="1544629318622" duration="1002000" />
       <workItem from="1545046942433" duration="11578000" />
+      <workItem from="1545103966484" duration="989000" />
     </task>
     <task id="LOCAL-00001" summary="Explaining comment for the chaining">
       <created>1544612093375</created>
@@ -293,13 +214,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25107000" />
+    <option name="totallyTimeSpent" value="26739000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14035088" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14331985" />
       <window_info id="Structure" order="1" weight="0.16910689" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -327,15 +247,12 @@
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
-      <window_info anchor="right" id="Maven" order="8" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.32955465" />
       <window_info anchor="right" id="Database" order="9" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Explaining comment for the chaining" />
@@ -347,35 +264,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="added cellchain, hope team review my code" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Move.java">
+    <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="77">
+          <caret line="201" column="63" lean-forward="true" selection-start-line="201" selection-start-column="63" selection-end-line="201" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/CellChain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="32" column="7" lean-forward="true" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        <state relative-caret-position="680">
+          <caret line="40" column="69" lean-forward="true" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="69" />
           <folding>
-            <element signature="e#166#172#0" expanded="true" />
-            <element signature="e#3169#3175#0" expanded="true" />
-            <element signature="e#3328#3334#0" expanded="true" />
-            <element signature="e#3381#3387#0" expanded="true" />
-            <element signature="e#3435#3441#0" expanded="true" />
-            <element signature="e#3489#3495#0" expanded="true" />
-            <element signature="e#3539#3545#0" expanded="true" />
-            <element signature="e#3586#3592#0" expanded="true" />
-            <element signature="e#12355#12361#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#492#493#0" expanded="true" />
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#556#557#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="64" />
+        <state relative-caret-position="-8">
+          <caret lean-forward="true" />
           <folding>
             <element signature="e#896#897#0" expanded="true" />
             <element signature="e#985#986#0" expanded="true" />
@@ -383,16 +295,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CellChain.java">
+    <entry file="file://$PROJECT_DIR$/src/Move.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="85" column="28" selection-start-line="85" selection-start-column="28" selection-end-line="85" selection-end-column="28" />
-          <folding>
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#547#548#0" expanded="true" />
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#611#612#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
