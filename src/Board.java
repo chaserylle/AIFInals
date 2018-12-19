@@ -80,7 +80,7 @@ public class Board {
 	 */
 	public void setInitialState(int column, int row, String top, String bottom) {
 //		boolean valid = true;
-		if(column%2==0) {
+		if(board[column][row].getUp()) {//column%2==0
 			board[column][row+1].setOccupied(top); //top
 			board[column+1][row].setOccupied(bottom); //upper right
 			board[column+1][row-1].setOccupied(top); //lower right
@@ -116,7 +116,7 @@ public class Board {
 	}
 	
 	
-	public int[] check(String playerID, String oponentID) {
+	/*public int[] check(String playerID, String oponentID) {
 		ArrayList<Cell> flip = new ArrayList<Cell>();
 		int least = 100;
 		int[] nextMove = {100,100};
@@ -404,7 +404,7 @@ public class Board {
 	}
 	
 	//for one tile only
-	public ArrayList<Cell> check(String playerID, String oponentID, int c, int r) {
+	/*public ArrayList<Cell> check(String playerID, String oponentID, int c, int r) {
 		ArrayList<Cell> enemies = new ArrayList<Cell>();
 		for(int column = 0; column < 9; column++) {
 			for(int row = 0; row < board[column].length; row++) {
@@ -494,7 +494,8 @@ public class Board {
 		
 		return enemies;
 	}
-	
+	*/
+
 	public ArrayList<Cell> checkDirection(String playerID, String oponentID, int c, int r){
 		ArrayList<Cell> enemies = new ArrayList<Cell>();
 		boolean closed;
@@ -631,9 +632,9 @@ public class Board {
 								}
 							}
 							closed = true;
-							
+
 						}
-						
+
 					}
 				}
 			}

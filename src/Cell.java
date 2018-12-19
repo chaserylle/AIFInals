@@ -1,16 +1,20 @@
 
 public class Cell {
 	private String occupied; // can be null, or the id of the player occupying the cell
-	private int column;
-	private int row;
+	private byte column;
+	private byte row;
 	private boolean up;//check whether the cell is upper in the hexed, if up true, if down false this is made to check the chain
 	
-	public Cell(String occupied, int row, int column, boolean up) {
+	public Cell(String occupied, byte row, byte column) {
 		super();
 		this.occupied = occupied;
 		this.column = column;
 		this.row = row;
-		this.up = up;
+		if(column%2==0){
+			this.up =false;
+		}else{
+			this.up =true;
+		}
 	}
 	
 	public String getOccupied() {
@@ -22,16 +26,16 @@ public class Cell {
 	public void setUp(boolean up){ this.up = up; }
 	public boolean getUp(){ return up; }
 	
-	public int getColumn() {
+	public byte getColumn() {
 		return column;
 	}
-	public void setColumn(int column) {
+	public void setColumn(byte column) {
 		this.column = column;
 	}
-	public int getRow() {
+	public byte getRow() {
 		return row;
 	}
-	public void setRow(int row) {
+	public void setRow(byte row) {
 		this.row = row;
 	}
 

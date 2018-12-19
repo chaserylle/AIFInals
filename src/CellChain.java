@@ -2,8 +2,8 @@ public class CellChain extends Cell {
     private CellChain parent;
     private String direction;
 
-    public CellChain(String occupied, int row, int column, boolean up,CellChain parent){
-        super(occupied,row,column,up);
+    public CellChain(String occupied, byte row, byte column,CellChain parent){
+        super(occupied,row,column);
 
         //if checkDirection returns true, assign parent and set Direction.
         if(checkDirection(this,parent)){
