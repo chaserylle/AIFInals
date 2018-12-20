@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Plate {
     private ArrayList<Cell> cellsTaken;
     private ArrayList<CellChain> chainsDetected;
@@ -70,8 +74,13 @@ public class Plate {
             }
             chainsDetected.remove(i);
         }
+        List<CellChain> list = new ArrayList<CellChain>(chainsDetected);//make a list copy of chainDetected ArrayList
+        chainsDetected = list.stream().distinct().collect(Collectors.toCollection(ArrayList::new));//assign the list of duplicated free into chinDetected.
 
     }
+
+
+
 
 
 
