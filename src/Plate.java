@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Plate {
-    private ArrayList<Cell> cellsTaken;
-    private ArrayList<CellChain> chainsDetected;
+    private ArrayList<Cell> cellsTaken = new ArrayList<>();
+    private ArrayList<CellChain> chainsDetected = new ArrayList<>();
     private final byte ROW_MAX = 7;
     private final byte COLUMN_MAX = 8;
 
@@ -28,6 +28,7 @@ public class Plate {
             printPlate();
             return true;
         } catch (Exception e){
+            e.printStackTrace();
             System.out.println("Initial State build up process went wrong");
             return false;
         }
@@ -50,17 +51,23 @@ public class Plate {
     }
 
     public void printPlate(){
-        for(int row=ROW_MAX;row>-1;row--){
-            for(int col=0;col<=COLUMN_MAX;row++){
+        boolean found = false;
+
+        for(int row=ROW_MAX;row>=0;row--){
+            for(int col=0;col<=COLUMN_MAX;col++){
                 for(Cell cellular : cellsTaken){
                     if(cellular.getColumn()==col && cellular.getRow()==row){
                         System.out.print(" "+cellular.getOccupied());
-                    }else{
-                        System.out.print(" "+"-");
+                        found =true;
                     }
                 }
+                if(found==false)System.out.print(" "+"-");
+                found=false;
             }
+            System.out.println(" "+row);
         }
+        System.out.println(" 0 1 2 3 4 5 6 7 8");
+
     }
 
     public void findChain(Cell cell){

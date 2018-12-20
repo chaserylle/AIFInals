@@ -29,16 +29,14 @@ public class theMain {
             System.out.print("\nAssign color to "+player2[0]);
             player2[1]= reader.next();
             System.out.println("where should be the initial location?");
-            System.out.println("Row :");
+            System.out.print("Row :");
             lI[0] = reader.nextByte();
             System.out.print("\nColumn :");
             lI[1] = reader.nextByte();
-            System.out.println();
 
             repeater_tillInit = board.setInitialState(player1[1],player2[1],lI[0],lI[1]);
         }while(!repeater_tillInit);
 
-        board.printPlate();
     }
 
 }
