@@ -4,12 +4,9 @@ public class CellChain extends Cell {
 
     public CellChain(String occupied, byte row, byte column,CellChain parent){
         super(occupied,row,column);
-
         //if checkDirection returns true, assign parent and set Direction.
-        if(checkDirection(this,parent)){
-            this.parent = parent;
-            findDirection(this);
-        }
+        this.parent = parent;
+        findDirection(this);
     }
 
     public String getDirection(){
@@ -76,15 +73,4 @@ public class CellChain extends Cell {
         this.parent = null;//other Directions are not allowed, so remove parent from cell.
         return null;// and set the direction null, now the cell is regarded as initial
     }
-
-
-
-    private boolean checkDirection(CellChain cell,CellChain pcell){
-            if (cell.getDirection().equals(pcell.getDirection())) return true;
-            //if parent nominate and current have same direction, return true to find direction
-            if (pcell.getDirection() == null) return true;
-            //if parent nominate is initial state, return true to find direction.
-            return false;//else, return false
-    }
-
 }

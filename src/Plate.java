@@ -1,10 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Plate {
     private ArrayList<Cell> cellsTaken = new ArrayList<>();
-    private ArrayList<CellChain> chainsDetected = new ArrayList<>();
+    private ArrayList<CellChain> chainsDetected = new ArrayList<>(10);
     private final byte ROW_MAX = 7;
     private final byte COLUMN_MAX = 8;
 
@@ -61,7 +59,13 @@ public class Plate {
                         found =true;
                     }
                 }
-                if(found==false)System.out.print(" "+"-");
+                if(found==false){
+                    if(col%2!=0&&row>6){
+                        System.out.print("  ");
+                    } else {
+                        System.out.print(" " + "-");
+                    }
+                }
                 found=false;
             }
             System.out.println(" "+row);
@@ -71,20 +75,6 @@ public class Plate {
     }
 
     public void findChain(){
-        for(Cell i: cellsTaken) {//all cell taken will get measured firstly
-                 chainsDetected.add(new CellChain(i.getOccupied(),i.getRow(),i.getColumn(),null));//adding one by one
-        }
-
-        for(CellChain i : chainsDetected){
-            for(Cell j : cellsTaken){
-                chainsDetected.add(new CellChain(j.getOccupied(),i.getRow(),i.getColumn(),i));
-            }
-            chainsDetected.remove(i);
-        }
-        List<CellChain> list = new ArrayList<CellChain>(chainsDetected);//make a list copy of chainDetected ArrayList
-        chainsDetected = list.stream().distinct().collect(Collectors.toCollection(ArrayList::new));//assign the list of duplicated free into chinDetected.
-
-        chainsDetected.toString();
 
     }
 
