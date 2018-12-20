@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,21 +8,21 @@ public class Plate {
     private final byte ROW_MAX = 7;
     private final byte COLUMN_MAX = 8;
 
-    public boolean setInitialState(String first,String second,byte column, byte row){
+    public boolean setInitialState(String first,String second, byte row, byte column){
         try {
-            colorCell(first, column, (byte) (row + 1));
-            colorCell(second, column, (byte) (row - 1));
-            if (column % 2 == 0) {//where (column,row).getUp() = false
-                colorCell(second, (byte) (column + 1), row);
-                colorCell(first, (byte) (column + 1), (byte) (row - 1));
-                colorCell(first, (byte) (column - 1), (byte) (row - 1));
-                colorCell(second, (byte) (column - 1), row);
-            } else {//where (column,row).getUp() true;
+            colorCell(first, (byte) (row + 1), column);
+            colorCell(second, (byte) (row - 1), column);
+            if (column % 2 == 0) {//where (row,column).getUp() = false
+                colorCell(second, row, (byte) (column + 1));
+                colorCell(first, (byte) (row - 1), (byte) (column + 1));
+                colorCell(first, (byte) (row - 1), (byte) (column - 1));
+                colorCell(second, row, (byte) (column - 1));
+            } else {//where (row,column).getUp() true;
                 if(row >6)return false; // up cells must not have index over 6
-                colorCell(second, (byte) (column + 1), (byte) (row + 1));
-                colorCell(first, (byte) (column + 1), row);
-                colorCell(first, (byte) (column - 1), row);
-                colorCell(second, (byte) (column - 1), (byte) (row + 1));
+                colorCell(second, (byte) (row + 1), (byte) (column + 1));
+                colorCell(first, row, (byte) (column + 1));
+                colorCell(first, row, (byte) (column - 1));
+                colorCell(second, (byte) (row + 1), (byte) (column - 1));
             }
             printPlate();
             return true;
@@ -34,14 +33,15 @@ public class Plate {
         }
     }
 
-    public boolean colorCell(String color,byte column,byte row){
+    public boolean colorCell(String color,byte row,byte column){
         if(column<0 || row<0){ // if column or row is lower than 0
             System.out.println("NEGATIVE INPUT oN COLUMN OR ROW DETECTED!"); // return warning
             return false; // return false
         }
         if(column<=COLUMN_MAX) { // if column is lower or equal to maximum
             if ((column % 2 == 0 && row <= ROW_MAX)||(column % 2 == 1 && row < ROW_MAX)) { // if (up and row is lower or equal to maximum) or (down and row is lower the maximum)
-                cellsTaken.add(new Cell(color, column, row)); // add the Cell made of given parameter
+                cellsTaken.add(new Cell(color, row, column)); // add the Cell made of given parameter
+                printPlate();
                 return true;// and return true
             } else {
                 return false;//else return false
@@ -70,7 +70,7 @@ public class Plate {
 
     }
 
-    public void findChain(Cell cell){
+    public void findChain(){
         for(Cell i: cellsTaken) {//all cell taken will get measured firstly
                  chainsDetected.add(new CellChain(i.getOccupied(),i.getRow(),i.getColumn(),null));//adding one by one
         }
@@ -83,6 +83,8 @@ public class Plate {
         }
         List<CellChain> list = new ArrayList<CellChain>(chainsDetected);//make a list copy of chainDetected ArrayList
         chainsDetected = list.stream().distinct().collect(Collectors.toCollection(ArrayList::new));//assign the list of duplicated free into chinDetected.
+
+        chainsDetected.toString();
 
     }
 

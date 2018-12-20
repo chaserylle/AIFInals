@@ -80,12 +80,11 @@ public class CellChain extends Cell {
 
 
     private boolean checkDirection(CellChain cell,CellChain pcell){
-        if(cell.getDirection().equals(pcell.getDirection())) return true;
-        //if parent nominate and current have same direction, return true to find direction
-        if(pcell.getDirection() == null) return true;
-        //if parent nominate is initial state, return true to find direction.
-        return false;
-
+            if (cell.getDirection().equals(pcell.getDirection())) return true;
+            //if parent nominate and current have same direction, return true to find direction
+            if (pcell.getDirection() == null) return true;
+            //if parent nominate is initial state, return true to find direction.
+            return false;//else, return false
     }
 
 }
