@@ -59,11 +59,17 @@ public class Plate {
         }
     }
 
-    public boolean findChain(Cell cell){
+    public void findChain(Cell cell){
         for(Cell i: cellsTaken) {//all cell taken will get measured firstly
-                 chainsDetected.add()
+                 chainsDetected.add(new CellChain(i.getOccupied(),i.getRow(),i.getColumn(),null));//adding one by one
         }
-        (second, column, (byte) (row - 1));
+
+        for(CellChain i : chainsDetected){
+            for(Cell j : cellsTaken){
+                chainsDetected.add(new CellChain(j.getOccupied(),i.getRow(),i.getColumn(),i));
+            }
+            chainsDetected.remove(i);
+        }
 
     }
 
